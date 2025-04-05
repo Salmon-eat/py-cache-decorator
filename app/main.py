@@ -1,10 +1,11 @@
-from keyword import kwlist
 from typing import Callable
 
 
 def cache(func: Callable) -> Callable:
     cache_dict = {}
-    def wrraper (*args, **kwargs):
+
+
+    def wrapper(*args, **kwargs) -> Callable:
         key = args
         if key in cache_dict:
             print("Getting from cache")
@@ -14,4 +15,4 @@ def cache(func: Callable) -> Callable:
             result = func(*args, **kwargs)
             cache_dict[key] = result
             return result
-    return wrraper
+    return wrapper
